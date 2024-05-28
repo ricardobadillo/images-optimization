@@ -1,0 +1,33 @@
+{
+  "name": "images-optimization",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run build && node dist/app.js",
+    "build": "rimraf ./dist && tsc",
+    "start:dev": "node --watch app.js",
+    "dev": "nodemon",
+    "images": "npm run images:resize && npm run images:compress",
+    "images:compress": "node scripts/compress.mjs",
+    "images:resize": "node scripts/resize.mjs"
+  },
+  "author": "Ricardo Badillo",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "imagemin": "^9.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-webp": "^8.0.0",
+    "sharp": "^0.33.4",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/imagemin": "^8.0.5",
+    "@types/imagemin-webp": "^7.0.3",
+    "@types/node": "^20.12.12",
+    "nodemon": "^3.1.1",
+    "rimraf": "^5.0.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
