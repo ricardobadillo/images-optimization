@@ -16,8 +16,8 @@ const webpPlugin = imageminWebp({ quality: 80 });
 
 (async () => {
   const files = await imagemin([ directory ], {
-    destination: `${__dirname}/../assets/images`,
-    plugins: [ pngPlugin, webpPlugin ]
+    destination: resolve(__dirname, '../assets/images/'),
+    plugins: [ pngPlugin, webpPlugin ],
   });
 
   if (files.length > 0) {
