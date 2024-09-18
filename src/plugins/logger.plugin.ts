@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from 'winston';
-const { combine, json, timestamp } = format
+const { combine, json, timestamp } = format;
 
 const createdLogger = createLogger({
   level: 'info',
@@ -7,7 +7,7 @@ const createdLogger = createLogger({
   transports: [
     new transports.File({ filename: 'logs/error.log', level: 'error' }),
     new transports.File({ filename: 'logs/combined.log' }),
-  ]
+  ],
 });
 
 export function buildLogger(service: string) {
@@ -15,9 +15,11 @@ export function buildLogger(service: string) {
     log: (message: string) => {
       createdLogger.log('info', { message, service });
     },
-  }
+  };
 }
 
-createdLogger.add(new transports.Console({
-  format: format.simple(),
-}));
+createdLogger.add(
+  new transports.Console({
+    format: format.simple(),
+  }),
+);

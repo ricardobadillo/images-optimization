@@ -33,7 +33,7 @@ readdirSync(directory).forEach(async (file: string) => {
       image.resize(imageSizes[index].size).toFile(`${directory}/${name}-${imageSizes[index].name}.${format}`);
     }
 
-    logger.log('Los archivos han sido redimensionados satisfactoriamente');
+    return logger.log('Los archivos han sido redimensionados satisfactoriamente');
   } catch (error) {
     logger.log(file);
   }

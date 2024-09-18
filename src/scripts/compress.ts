@@ -24,8 +24,8 @@ const webpPlugin = imageminWebp({ quality: 80 });
   });
 
   if (files.length > 0) {
-    logger.log('Los archivos han sido comprimidos y convertidos a WebP');
+    return logger.log('Los archivos han sido comprimidos y convertidos a WebP');
   } else {
-    logger.log('No se encontraron archivos para comprimir');
+    return logger.log('No se encontraron archivos para comprimir');
   }
 })();
