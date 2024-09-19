@@ -11,10 +11,10 @@ const directory = resolve(__dirname, '../assets/images');
 const logger = buildLogger('compress.js');
 
 const imageSizes = [
-  { name: 'desktop', size: 1600 },
-  { name: 'laptop', size: 1024 },
-  { name: 'tablet', size: 768 },
   { name: 'mobile', size: 320 },
+  { name: 'tablet', size: 768 },
+  { name: 'laptop', size: 1024 },
+  { name: 'desktop', size: 1600 },
 ];
 
 readdirSync(directory).forEach(async (file: string) => {
@@ -28,7 +28,10 @@ readdirSync(directory).forEach(async (file: string) => {
     if (!format) return logger.log('No se pudo obtener el formato del archivo');
 
     for (let index = 0; index < imageSizes.length; index++) {
-      if (width! < imageSizes[index].size) continue;
+      if (width! < imageSizes[index].size) {
+        image.resize(imageSizes[index].size).toFile(`${directory}/${name}-${imageSizes[index].name}.${format}`);
+        break;
+      }
 
       image.resize(imageSizes[index].size).toFile(`${directory}/${name}-${imageSizes[index].name}.${format}`);
     }
